@@ -14,112 +14,124 @@ export default function Hero() {
   return (
     <section
       dir="rtl"
-      className="relative overflow-hidden pt-12 pb-16 lg:pt-24 lg:pb-32 bg-white"
+      className="relative overflow-hidden py-6 bg-gradient-to-b from-background via-background to-muted/30 border-2 border-green-700"
     >
-      {/* Static soft background blobs (no animation) */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-violet-50 blur-[100px] rounded-full -z-10" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-slate-50 blur-[100px] rounded-full -z-10" />
+      {/* Background Glow */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 blur-[140px] rounded-full -z-10" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/20 blur-[120px] rounded-full -z-10" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* CONTENT */}
-          <div className="text-right max-w-2xl mx-auto lg:mx-0">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
+          {/* LEFT CONTENT */}
+          <div className="text-center lg:text-right max-w-2xl mx-auto lg:mx-0">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-slate-200 bg-slate-50 text-xs font-bold text-slate-600">
-              <span className="h-2 w-2 rounded-full bg-violet-500" />
+            <div className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border bg-background/60 backdrop-blur text-sm font-medium shadow-sm">
+              <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
               منصة ERP سحابية متكاملة
             </div>
 
             {/* Heading */}
-            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-black leading-tight text-slate-900">
-              أدر أعمالك
-              <span className="text-violet-600 block sm:inline sm:mr-3">بذكاء وكفاءة</span>
-              <span className="block mt-1 sm:mt-2 text-slate-800">من مكان واحد</span>
-            </h1>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight">
+              إدارة مالية ذكية
+              <span className="block text-primary mt-3">
+                لشركتك في مكان واحد
+              </span>
+            </h2>
 
             {/* Description */}
-            <p className="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed font-medium max-w-xl">
-              نظام متكامل لإدارة الحسابات، المستودعات، والموارد البشرية. صُمم ليوفر لك الوقت والجهد في إدارة مؤسستك.
+            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+              نظام ERP احترافي لإدارة الحسابات، العملاء، الموردين، والخزينة مع
+              تقارير مالية فورية تساعدك على اتخاذ قرارات دقيقة مبنية على بيانات
+              حقيقية.
             </p>
 
-            {/* Features Grid */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {/* Features */}
+            <ul className="mt-10 grid sm:grid-cols-2 gap-4 text-muted-foreground">
               {features.map((feature) => (
-                <div
+                <li
                   key={feature}
-                  className="flex items-center gap-3 bg-slate-50/50 p-4 rounded-xl border border-slate-100 hover:border-violet-200 hover:bg-white transition-colors duration-200"
+                  className="flex items-start gap-3 bg-background/60 backdrop-blur p-3 rounded-xl border hover:shadow-md transition"
                 >
-                  <div className="flex-shrink-0 rounded-lg bg-violet-100 p-1.5">
-                    <Check className="h-4 w-4 text-violet-600" />
+                  <div className="rounded-full bg-primary/10 p-1 mt-1">
+                    <Check className="h-4 w-4 text-primary" />
                   </div>
-                  <span className="text-sm font-bold text-slate-700">{feature}</span>
-                </div>
+                  <span className="text-sm leading-relaxed">{feature}</span>
+                </li>
               ))}
-            </div>
+            </ul>
 
             {/* CTA */}
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-start">
-              <Button size="lg" className="h-14 px-8 text-lg font-bold rounded-xl bg-violet-600 hover:bg-violet-700 text-white shadow-md shadow-violet-100">
-                ابدأ الآن مجاناً
-                <ArrowLeft className="mr-2 h-5 w-5" />
+            <div className="mt-12 flex flex-wrap gap-4 justify-center lg:justify-start">
+              <Button size="lg" className="group px-8 text-base shadow-md">
+                ابدأ مجانًا
+                <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
               </Button>
 
-              <Button size="lg" variant="outline" className="h-14 px-8 text-lg font-bold rounded-xl border-slate-200 hover:bg-slate-50">
-                مشاهدة فيديو الشرح
+              <Button size="lg" variant="outline" className="px-8 text-base">
+                عرض توضيحي
               </Button>
             </div>
           </div>
 
-          {/* DASHBOARD VISUAL */}
-          <div className="relative mt-12 lg:mt-0">
-            <div className="relative rounded-3xl border border-slate-200 bg-white shadow-2xl p-4 sm:p-6 overflow-hidden">
-              {/* Fake UI Header */}
-              <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded bg-slate-100" />
-                  <div className="h-3 w-24 bg-slate-100 rounded" />
-                </div>
-                <div className="h-3 w-16 bg-slate-50 rounded" />
+          {/* RIGHT SIDE - DASHBOARD MOCKUP */}
+          <div className="relative">
+            <div className="rounded-3xl border bg-background/70 backdrop-blur-xl shadow-2xl p-6">
+              {/* Top Bar */}
+              <div className="flex items-center justify-between border-b pb-4 mb-6">
+                <div className="text-sm font-semibold">لوحة التحكم المالية</div>
+                <div className="text-xs text-muted-foreground">تحديث مباشر</div>
               </div>
 
-              {/* Stats Grid */}
+              {/* Stats */}
               <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                  <p className="text-[10px] font-bold text-slate-400 uppercase mb-1">المبيعات</p>
-                  <p className="text-xl font-black text-slate-900">45,280 <span className="text-[10px] font-medium">ج.م</span></p>
+                <div className="bg-muted/40 p-4 rounded-2xl border">
+                  <p className="text-xs text-muted-foreground">
+                    إجمالي الإيرادات
+                  </p>
+                  <p className="text-xl font-bold mt-2">245,000 ج.م</p>
                 </div>
 
-                <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                  <p className="text-[10px] font-bold text-slate-400 uppercase mb-1">الأرباح</p>
-                  <p className="text-xl font-black text-violet-600">12,400 <span className="text-[10px] font-medium">ج.م</span></p>
+                <div className="bg-muted/40 p-4 rounded-2xl border">
+                  <p className="text-xs text-muted-foreground">صافي الربح</p>
+                  <p className="text-xl font-bold mt-2 text-emerald-600">
+                    82,300 ج.م
+                  </p>
                 </div>
               </div>
 
-              {/* Static Bar Chart */}
-              <div className="h-40 w-full bg-slate-50 rounded-2xl p-4 flex items-end justify-between gap-2">
-                {[40, 70, 45, 90, 60, 80, 55].map((h, i) => (
-                  <div
-                    key={i}
-                    className="w-full bg-violet-200 rounded-t-lg"
-                    style={{ height: `${h}%` }}
-                  />
-                ))}
+              {/* Chart */}
+              <div className="h-36 rounded-2xl bg-gradient-to-r from-primary/10 to-blue-500/10 border flex items-end p-4">
+                <div className="w-full grid grid-cols-7 gap-2 items-end">
+                  {[40, 60, 35, 70, 55, 80, 65].map((h, i) => (
+                    <div
+                      key={i}
+                      className="bg-primary/40 rounded-md"
+                      style={{ height: `${h}%` }}
+                    />
+                  ))}
+                </div>
               </div>
 
-              {/* Recent Entries */}
+              {/* Recent Transactions */}
               <div className="mt-6 space-y-3">
-                {[1, 2].map((i) => (
-                  <div key={i} className="flex justify-between items-center p-2 rounded-lg bg-white border border-slate-50">
-                    <div className="h-2 w-24 bg-slate-100 rounded" />
-                    <div className="h-2 w-12 bg-slate-50 rounded" />
-                  </div>
-                ))}
+                <div className="flex justify-between text-sm">
+                  <span>دفعة من عميل</span>
+                  <span className="text-emerald-600">+12,000 ج.م</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span>مصروف تشغيل</span>
+                  <span className="text-red-500">-4,500 ج.م</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span>تحصيل فاتورة</span>
+                  <span className="text-emerald-600">+8,200 ج.م</span>
+                </div>
               </div>
             </div>
 
-            {/* Float badge */}
-            <div className="absolute -bottom-4 right-8 bg-slate-900 text-white rounded-xl px-4 py-2 text-xs font-bold shadow-xl">
-              دقة 100% في التقارير
+            {/* Floating Trust Badge */}
+            <div className="absolute -bottom-6 -right-6 bg-background border shadow-lg rounded-full px-5 py-2 text-sm backdrop-blur">
+              🔒 أمان عالي وتشفير كامل
             </div>
           </div>
         </div>
