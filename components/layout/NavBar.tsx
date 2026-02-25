@@ -32,31 +32,34 @@ export default function NavBar() {
     <>
       <header
         className={clsx(
-          "fixed top-0 z-50 w-full shadow-lg transition-all duration-300",
+          "fixed top-0 z-50 w-full transition-all duration-500",
           isScrolled
-            ? "bg-purple-800/90 backdrop-blur-md border-b border-gray-400"
-            : "bg-white/90 ",
+            ? "bg-white/80 backdrop-blur-lg border-b border-slate-200/50 shadow-sm py-2"
+            : "bg-transparent py-4",
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center gap-1.5">
-              <span className="bg-slate-700 p-2 rounded-md ml-1.5 ">
-                <Brain className="w-6 h-6 text-violet-400" />
-              </span>
+            <Link href="/" className="flex items-center gap-2.5 group">
+              <div className="bg-violet-600 p-2 rounded-xl shadow-lg shadow-violet-200 group-hover:scale-105 transition-transform duration-300">
+                <Brain className="w-6 h-6 text-white" />
+              </div>
 
               <div className="flex flex-col leading-tight">
-                <span className="text-sm font-semibold text-white">
-                  نظام إدارة الأعمال
+                <span className={clsx(
+                  "text-lg font-bold tracking-tight transition-colors duration-300",
+                  isScrolled ? "text-slate-900" : "text-slate-900"
+                )}>
+                  إدارة ذكية
                 </span>
-                <span className="text-[11px] text-slate-200">
-                  Enterprise Solutions
+                <span className="text-[10px] uppercase tracking-widest font-medium text-violet-600/80">
+                  Enterprise ERP
                 </span>
               </div>
             </Link>
 
             <nav className="hidden md:block">
-              <ul className="flex items-center gap-4">
+              <ul className="flex items-center gap-1">
                 {navLinks.map((link) => {
                   const isActive = pathname === link.href;
 
@@ -65,13 +68,17 @@ export default function NavBar() {
                       <Link
                         href={link.href}
                         className={clsx(
-                          "px-4 py-2 rounded-md text-sm font-bold transition-colors",
+                          "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 relative group",
                           isActive
-                            ? "text-violet-600 bg-violet-50"
-                            : "text-slate-200  hover:text-slate-400 hover:bg-slate-100",
+                            ? "text-violet-600"
+                            : "text-slate-600 hover:text-violet-600",
                         )}
                       >
                         {link.label}
+                        <span className={clsx(
+                          "absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-violet-600 transition-all duration-300 opacity-0 group-hover:opacity-100",
+                          isActive && "opacity-100 w-4"
+                        )} />
                       </Link>
                     </li>
                   );
@@ -79,13 +86,20 @@ export default function NavBar() {
               </ul>
             </nav>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               {!isLoggedIn && (
-                <Link href="/login" className="hidden md:block">
-                  <Button className="bg-violet-600 hover:bg-violet-700 text-white px-5 rounded-md shadow-sm">
-                    تسجيل الدخول
-                  </Button>
-                </Link>
+                <div className="hidden md:flex items-center gap-3">
+                  <Link href="/login">
+                    <Button variant="ghost" className="text-slate-600 hover:text-violet-600 font-medium">
+                      دخول
+                    </Button>
+                  </Link>
+                  <Link href="/signup">
+                    <Button className="bg-violet-600 hover:bg-violet-700 text-white px-6 rounded-full shadow-md shadow-violet-100 transition-all hover:shadow-lg hover:shadow-violet-200 active:scale-95">
+                      ابدأ الآن
+                    </Button>
+                  </Link>
+                </div>
               )}
 
               {isLoggedIn && (
