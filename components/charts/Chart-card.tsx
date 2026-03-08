@@ -19,7 +19,7 @@ export default function ChartCard({ title, description, children }: Props) {
       </CardHeader>
 
       <CardContent>
-        <div className="h-[320px]">{children}</div>
+        <div className="h-[320px] w-full">{children}</div>
       </CardContent>
     </Card>
   );

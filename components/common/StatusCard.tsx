@@ -17,7 +17,7 @@ interface StatCardProps {
 export default function StatusCard({
   title,
   value,
-  currency = "EGP",
+  currency,
   gradient,
   Icon,
   badgeText,

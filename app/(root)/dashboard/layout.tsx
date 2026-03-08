@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <SidebarProvider>
-      <main className="flex min-h-screen w-full" >
+      <main className="flex min-h-screen w-full">
         <AppSidebar />
         <div className="flex flex-1 flex-col">
           <SidebarTrigger />
