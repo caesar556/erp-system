@@ -29,8 +29,8 @@ const menuItems = [
     icon: LayoutDashboard,
   },
   {
-    title: "الخزنة",
-    url: "/cash",
+    title: "المعاملات المالية",
+    url: "/dashboard/transactions",
     icon: Wallet,
   },
   {
@@ -39,13 +39,18 @@ const menuItems = [
     icon: Users,
   },
   {
+    title: "التحليلات",
+    url: "/dashboard/analytics",
+    icon: Brain,
+  },
+  {
     title: "الإلتزامات",
-    url: "/obligations",
+    url: "/dashboard/obligations",
     icon: CreditCard,
   },
   {
     title: "الذكاء الاصطناعي",
-    url: "/ai-insights",
+    url: "/dashboard/ai-insights",
     icon: Brain,
   },
 ];
@@ -68,7 +73,7 @@ export function AppSidebar() {
               نظام الحسابات
             </span>
             <span className="text-[14px] text-slate-500 uppercase tracking-widest font-semibold">
-               نظام إدارة الأعمال 
+              نظام إدارة الأعمال
             </span>
           </div>
         </div>

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 export default function MobileMenu() {
   const pathname = usePathname();
   return (
-    <div className="md:hidden border-t border-gray-400 bg-purple-800/80">
+    <div className="md:hidden border-t z-[999] border-gray-400 bg-purple-800/80">
       <nav className="px-4 py-4 space-y-2">
         {navLinks.map((link) => {
           const isActive = pathname === link.href;
