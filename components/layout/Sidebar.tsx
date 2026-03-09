@@ -6,6 +6,9 @@ import {
   LayoutDashboard,
   Brain,
   CreditCard,
+  ChartNoAxesCombined,
+  BookLock,
+  Building2,
 } from "lucide-react";
 
 import {
@@ -41,7 +44,17 @@ const menuItems = [
   {
     title: "التحليلات",
     url: "/dashboard/analytics",
-    icon: Brain,
+    icon: ChartNoAxesCombined,
+  },
+  {
+    title: "المؤسسات",
+    url: "/dashboard/organizations",
+    icon: Building2,
+  },
+  {
+    title: "التقارير",
+    url: "/dashboard/reports",
+    icon: BookLock,
   },
   {
     title: "الإلتزامات",
@@ -61,7 +74,7 @@ export function AppSidebar() {
   return (
     <Sidebar
       side="right"
-      className="border-l bg-slate-900 text-slate-300 overflow-hidden"
+      className="border-l bg-slate-900 text-slate-300 overflow-hidden z-[999]"
     >
       <SidebarHeader className="p-6">
         <div className="flex items-center gap-3">

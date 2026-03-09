@@ -15,6 +15,7 @@ import PaymentsMethods from "./PaymentsMethods";
 import HeaderBox from "@/components/common/HeaderBox";
 import IncomingStats from "./IncomingStats";
 import CashFlow from "./CashFlow";
+import IncomingYearStats from "./IncomingYearStats";
 
 export default function AnalyticsPage() {
   const stats = [
@@ -22,6 +23,7 @@ export default function AnalyticsPage() {
       title: "إجمالي المقبوضات",
       value: 250000,
       gradient: "bg-gradient-to-br from-emerald-500 to-teal-600",
+      currency: "EGP",
       Icon: TrendingUp,
       badgeText: "+12.5% منذ الشهر الماضي",
       BadgeIcon: ArrowUpRight,
@@ -30,6 +32,7 @@ export default function AnalyticsPage() {
     {
       title: "إجمالي المدفوعات",
       value: 180000,
+      currency: "EGP",
       gradient: "bg-gradient-to-br from-rose-500 to-red-600",
       Icon: TrendingDown,
       badgeText: "-5.2% أقل من الشهر الماضي",
@@ -39,6 +42,7 @@ export default function AnalyticsPage() {
     {
       title: "رصيد الخزينة المتوفر",
       value: 520000,
+      currency: "EGP",
       gradient: "bg-gradient-to-br from-violet-600 to-indigo-700",
       Icon: Wallet,
       badgeText: "تحديث فوري عبر السحابة",
@@ -79,8 +83,11 @@ export default function AnalyticsPage() {
 
   return (
     <div className="p-8 space-y-10 bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
-      <HeaderBox />
-      {/* Primary Financial Metrics */}
+      <HeaderBox
+        title="نظام تحليل النشاط التجاري"
+        subtext="هنا يمكنك رؤية إحصائيات دقيقة عن نشاطك التجاري"
+        user="بلال"
+      />
       <div>
         <div className="mb-6">
           <h2 className="text-lg font-semibold text-slate-800">
@@ -96,14 +103,10 @@ export default function AnalyticsPage() {
           ))}
         </div>
       </div>
-
-      {/* Revenue and Expenses Grid */}
       <IncomingStats />
-
-      {/* Cashflow Analysis */}
+      <IncomingYearStats />
       <CashFlow />
 
-      {/* Additional Metrics Section */}
       <div>
         <div className="mb-6">
           <h2 className="text-lg font-semibold text-slate-800">
@@ -120,7 +123,6 @@ export default function AnalyticsPage() {
         </div>
       </div>
 
-      {/* Payment Methods Section */}
       <PaymentsMethods />
     </div>
   );
