@@ -14,17 +14,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <SidebarProvider defaultOpen={true}>
-      <div dir="rtl" className="flex min-h-screen w-full overflow-hidden">
+    <SidebarProvider>
+      <main dir="rtl" className="min-h-screen w-full flex">
         <AppSidebar />
 
-        <div className="flex flex-1 flex-col">
-          <div className="flex items-center border-b p-4">
-            <SidebarTrigger />
-          </div>
-          <main className="flex-1 overflow-y-auto p-4">{children}</main>
+
+        <div className="overflow-y-auto flex-1 flex-col ">
+          <header >
+            NavBar 
+            <SidebarTrigger className="absolute right-0 top-0 z-50 " />
+
+          </header>
+          {children}
         </div>
-      </div>
+      </main>
     </SidebarProvider>
   );
 }

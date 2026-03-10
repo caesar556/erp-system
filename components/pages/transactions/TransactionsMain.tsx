@@ -4,7 +4,7 @@ import TransactionsTable from "@/components/pages/transactions/TransactionsTable
 
 export default function TransactionsMain() {
   return (
-    <div className="overflow-hidden w-full">
+    <div className="p-8 space-y-10 bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
       <HeaderBox
         title="نظام إدارة المعاملات المالية"
         subtext="هنا يمكنك رؤية وإدارة جميع المعاملات المالية الخاصة بك"

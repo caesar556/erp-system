@@ -11,8 +11,10 @@ import {
   CardContent,
   CardDescription,
 } from "@/components/ui/card";
+import SearchInp from "@/components/common/SearchInp";
+import TransactionsToolbar from "@/components/filters/TransactionsToolbar";
 
-const PAGE_SIZE = 4;
+const PAGE_SIZE = 5;
 
 export default function TransactionsTable() {
   const [page, setPage] = useState(1);
@@ -23,18 +25,30 @@ export default function TransactionsTable() {
   const data = transactions.slice(start, start + PAGE_SIZE);
 
   return (
-    <Card className="shadow-lg border-none ring-1 ring-slate-200 mt-6 ">
-      <CardHeader className="flex flex-row items-center justify-between border-b mx-6 px-0 pb-6">
-        <CardTitle className="text-2xl font-black text-slate-900">
+    <Card className="shadow-lg border-none ring-1 ring-slate-200 mt-8 ">
+      <CardHeader className="flex flex-col items-center justify-between border-b mx-6 px-0 pb-3">
+        <CardTitle className="text-2xl lg:text-4xl font-black text-slate-900">
           سجل المعاملات المالية
         </CardTitle>
-        <CardDescription className="text-md font-medium text-md text-slate-600">
+        <CardDescription className="text-sm lg:text-md font-medium text-md text-slate-600">
           {" "}
           هنا يمكنك رؤية كل المعاملات المالية داخل الخزينة{" "}
         </CardDescription>
       </CardHeader>
 
       <CardContent className="p-0">
+        <div className="flex gap-6 justify-between items-center mb-4 px-8 w-full flex-wrap">
+          <SearchInp value="" onChange={() => console.log("click")} />
+
+          <TransactionsToolbar
+            type=""
+            setType={() => ""}
+            payment=""
+            setPayment={() => ""}
+            date=""
+            setDate={() => ""}
+          />
+        </div>
         <div className="overflow-x-auto">
           <table className="w-full text-right">
             <thead className="bg-slate-50 text-sm font-bold text-slate-500 uppercase">
@@ -43,7 +57,8 @@ export default function TransactionsTable() {
                 <th className="px-8 py-4">المبلغ</th>
                 <th className="px-8 py-4">الوصف</th>
                 <th className="px-8 py-4">طريقة الدفع</th>
-                <th className="px-8 py-4 text-left">التاريخ</th>
+                <th className="px-8 py-4 ">التاريخ</th>
+                <th className="px-8 py-4 text-left">العمليات</th>
               </tr>
             </thead>
 
@@ -72,11 +87,11 @@ export default function TransactionsTable() {
                     {t.amount.toLocaleString()} EGP
                   </td>
 
-                  <td className="px-8 py-5 font-medium text-slate-700">
+                  <td className="text-sm lg:text-md px-8 py-5 font-bold text-slate-700">
                     {t.description}
                   </td>
 
-                  <td className="px-8 py-5 text-slate-600 font-semibold">
+                  <td className="px-8 py-5  text-slate-600 font-semibold">
                     {t.paymentMethod === "CASH"
                       ? "نقدي"
                       : t.paymentMethod === "TRANSFER"
@@ -84,7 +99,7 @@ export default function TransactionsTable() {
                         : "شيك"}
                   </td>
 
-                  <td className="px-8 py-5 text-left text-sm text-slate-400 font-mono">
+                  <td className="px-8 py-5 text-right text-sm text-slate-400 font-mono">
                     {new Date(t.createdAt).toLocaleDateString("ar-EG")}
                   </td>
                 </tr>
@@ -93,7 +108,6 @@ export default function TransactionsTable() {
           </table>
         </div>
 
-        {/* Pagination */}
 
         <div className="flex items-center justify-between px-6 py-4 border-t">
           <span className="text-sm text-slate-500">

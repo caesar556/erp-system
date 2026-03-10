@@ -22,7 +22,7 @@ export default function HeaderBox({ title, subtext, user }: HeaderBoxProps) {
         )}
 
         {/* Main title with gradient */}
-        <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-violet-900 via-sky-700 to-purple-700 bg-clip-text text-transparent leading-tight">
+        <h1 className="text-3xl lg:text-5xl font-bold bg-gradient-to-r from-violet-900 via-sky-700 to-purple-700 bg-clip-text text-transparent leading-tight">
           {title}
         </h1>
 
@@ -32,7 +32,7 @@ export default function HeaderBox({ title, subtext, user }: HeaderBoxProps) {
         </div>
 
         {/* Subtext */}
-        <p className="text-lg text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto">
+        <p className="text-md lg:text-lg text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto">
           {subtext}
         </p>
       </div>
