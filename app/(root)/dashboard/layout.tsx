@@ -15,15 +15,17 @@ export default function RootLayout({
 }>) {
   return (
     <SidebarProvider defaultOpen={true}>
-      <AppSidebar />
-      <main className="flex flex-1 flex-col min-h-screen w-full">
-        <div className="fixed top-4 right-4 z-40 md:hidden">
-          <SidebarTrigger className="bg-slate-900 text-white hover:bg-slate-800 border-0" />
-        </div>
-        <div className="flex-1">
-          {children}
-        </div>
-      </main>
+      <div className="flex w-full">
+        <AppSidebar />
+        <main className="flex flex-1 flex-col min-h-screen w-full">
+          <div className="sticky top-0 z-40 block md:hidden bg-slate-900 border-b border-slate-800 px-4 py-3">
+            <SidebarTrigger className="bg-violet-600 text-white hover:bg-violet-700 border-0 h-10 w-10 rounded-lg" />
+          </div>
+          <div className="flex-1">
+            {children}
+          </div>
+        </main>
+      </div>
     </SidebarProvider>
   );
 }

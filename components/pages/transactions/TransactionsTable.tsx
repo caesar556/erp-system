@@ -125,7 +125,7 @@ export default function TransactionsTable() {
                   </td>
 
                   <td className="px-6 py-5 text-center">
-                    <div className="flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    <div className="flex items-center justify-center gap-2 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200">
                       <Button
                         variant="ghost"
                         size="sm"
