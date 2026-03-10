@@ -1,5 +1,6 @@
 import HeaderBox from "@/components/common/HeaderBox";
 import Status from "@/components/pages/transactions/Status";
+import TransactionsTable from "@/components/pages/transactions/TransactionsTable";
 
 export default function TransactionsPage() {
   return (
@@ -12,6 +13,7 @@ export default function TransactionsPage() {
 
       <Status />
       <h2>Form </h2>
+      <TransactionsTable />
     </section>
   );
 }

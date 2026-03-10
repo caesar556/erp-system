@@ -41,3 +41,66 @@ export const features = [
     icon: ShieldCheck,
   },
 ];
+
+export type TransactionType = "CREDIT" | "DEBIT";
+export type PaymentMethod = "CASH" | "TRANSFER" | "CHECK";
+
+export interface Transaction {
+  _id: string;
+  type: TransactionType;
+  amount: number;
+  description: string;
+  paymentMethod: PaymentMethod;
+  createdAt: string;
+}
+
+export const transactions: Transaction[] = [
+  {
+    _id: "1",
+    type: "CREDIT",
+    amount: 12000,
+    description: "تحصيل فاتورة شركة النور",
+    paymentMethod: "TRANSFER",
+    createdAt: "2026-03-08",
+  },
+  {
+    _id: "2",
+    type: "DEBIT",
+    amount: 3500,
+    description: "دفع إيجار المكتب",
+    paymentMethod: "CASH",
+    createdAt: "2026-03-07",
+  },
+  {
+    _id: "3",
+    type: "CREDIT",
+    amount: 5400,
+    description: "تحصيل خدمات استشارية",
+    paymentMethod: "CHECK",
+    createdAt: "2026-03-07",
+  },
+  {
+    _id: "4",
+    type: "DEBIT",
+    amount: 2200,
+    description: "شراء أدوات مكتبية",
+    paymentMethod: "CASH",
+    createdAt: "2026-03-06",
+  },
+  {
+    _id: "5",
+    type: "CREDIT",
+    amount: 9000,
+    description: "دفعة مشروع تطوير",
+    paymentMethod: "TRANSFER",
+    createdAt: "2026-03-05",
+  },
+  {
+    _id: "6",
+    type: "DEBIT",
+    amount: 1800,
+    description: "فاتورة الإنترنت",
+    paymentMethod: "TRANSFER",
+    createdAt: "2026-03-05",
+  },
+];

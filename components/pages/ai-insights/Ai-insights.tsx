@@ -110,7 +110,7 @@ export default function AiInsightsMain({ treasuryId }: AIInsightsMainProps) {
           </CardContent>
         </Card>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <Card className="border-none shadow-xl bg-white">
             <CardHeader className="border-b bg-gradient-to-r from-amber-50 to-orange-50">
               <CardTitle className="text-xl font-bold text-amber-700 flex items-center gap-2">
