@@ -74,7 +74,7 @@ export function AppSidebar() {
   return (
     <Sidebar
       side="right"
-      className="border-l border-slate-800 bg-slate-900 text-slate-300 overflow-hidden z-50"
+      className="border-l bg-slate-900 text-slate-300 h-dvh"
     >
       <SidebarHeader className="p-6">
         <div className="flex items-center gap-3">
@@ -92,7 +92,7 @@ export function AppSidebar() {
         </div>
       </SidebarHeader>
 
-      <SidebarSeparator className="bg-slate-700" />
+      <SidebarSeparator className="bg-gray-200" />
 
       <SidebarContent className="px-4 py-4">
         <SidebarMenu>

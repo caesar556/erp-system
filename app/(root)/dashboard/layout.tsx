@@ -10,21 +10,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <SidebarProvider defaultOpen={true}>
-      <div className="flex w-full">
+    <SidebarProvider>
+      <div dir="rtl" className="flex min-h-screen w-full  border-6 border-sky-700 overflow-hidden">
         <AppSidebar />
-        <main className="flex flex-1 flex-col min-h-screen w-full">
-          <div className="sticky top-0 z-40 block md:hidden bg-slate-900 border-b border-slate-800 px-4 py-3">
-            <SidebarTrigger className="bg-violet-600 text-white hover:bg-violet-700 border-0 h-10 w-10 rounded-lg" />
-          </div>
-          <div className="flex-1">
-            {children}
-          </div>
-        </main>
+
+        <div className="flex flex-1 flex-col border-6 border-green-700 p-4">
+          <SidebarTrigger />
+          <main className="flex-1 overflow-y-auto">{children}</main>
+        </div>
       </div>
     </SidebarProvider>
   );
