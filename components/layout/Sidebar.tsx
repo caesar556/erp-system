@@ -20,6 +20,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarSeparator,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -70,29 +71,33 @@ const menuItems = [
 
 export function AppSidebar() {
   const pathname = usePathname();
+  const { state } = useSidebar();
 
   return (
     <Sidebar
       side="right"
       className="border-l bg-slate-900 text-slate-300 h-dvh"
+      collapsible="icon"
     >
-      <SidebarHeader className="p-6">
-        <div className="flex items-center gap-3">
+      <SidebarHeader className={cn("p-6 transition-all duration-200", state === "collapsed" && "p-3")}>
+        <div className={cn("flex items-center gap-3", state === "collapsed" && "justify-center")}>
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-600 text-white shadow-lg shadow-violet-900/20">
             <Brain className="h-6 w-6" />
           </div>
-          <div className="flex flex-col">
-            <span className="text-lg font-bold text-white tracking-tight">
-              نظام الحسابات
-            </span>
-            <span className="text-[14px] text-slate-500 uppercase tracking-widest font-semibold">
-              نظام إدارة الأعمال
-            </span>
-          </div>
+          {state === "expanded" && (
+            <div className="flex flex-col">
+              <span className="text-lg font-bold text-white tracking-tight">
+                نظام الحسابات
+              </span>
+              <span className="text-[14px] text-slate-500 uppercase tracking-widest font-semibold">
+                نظام إدارة الأعمال
+              </span>
+            </div>
+          )}
         </div>
       </SidebarHeader>
 
-      <SidebarSeparator className="bg-gray-200" />
+      {state === "expanded" && <SidebarSeparator className="bg-gray-200" />}
 
       <SidebarContent className="px-4 py-4">
         <SidebarMenu>
@@ -102,6 +107,7 @@ export function AppSidebar() {
               <SidebarMenuItem key={item.title} className="mb-1">
                 <SidebarMenuButton
                   asChild
+                  tooltip={state === "collapsed" ? item.title : undefined}
                   className={cn(
                     "group relative flex h-11 items-center gap-3 px-3 transition-all duration-200 rounded-lg",
                     isActive
@@ -112,14 +118,14 @@ export function AppSidebar() {
                   <Link href={item.url}>
                     <item.icon
                       className={cn(
-                        "h-5 w-5 transition-colors",
+                        "h-5 w-5 transition-colors flex-shrink-0",
                         isActive
                           ? "text-violet-500"
                           : "text-slate-500 group-hover:text-slate-300",
                       )}
                     />
-                    <span className="text-[15px]">{item.title}</span>
-                    {isActive && (
+                    {state === "expanded" && <span className="text-[15px]">{item.title}</span>}
+                    {isActive && state === "expanded" && (
                       <div className="absolute left-1 h-6 w-1 rounded-full bg-violet-500 shadow-[0_0_8px_rgba(139,92,246,0.6)]" />
                     )}
                   </Link>
@@ -130,7 +136,9 @@ export function AppSidebar() {
         </SidebarMenu>
       </SidebarContent>
 
-      <SidebarFooter className="mt-auto p-4">Footer</SidebarFooter>
+      <SidebarFooter className="mt-auto p-4">
+        {state === "expanded" && <div>Footer</div>}
+      </SidebarFooter>
     </Sidebar>
   );
 }

@@ -14,13 +14,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <SidebarProvider>
-      <div dir="rtl" className="flex min-h-screen w-full  border-6 border-sky-700 overflow-hidden">
+    <SidebarProvider defaultOpen={true}>
+      <div dir="rtl" className="flex min-h-screen w-full overflow-hidden">
         <AppSidebar />
 
-        <div className="flex flex-1 flex-col border-6 border-green-700 p-4">
-          <SidebarTrigger />
-          <main className="flex-1 overflow-y-auto">{children}</main>
+        <div className="flex flex-1 flex-col">
+          <div className="flex items-center border-b p-4">
+            <SidebarTrigger />
+          </div>
+          <main className="flex-1 overflow-y-auto p-4">{children}</main>
         </div>
       </div>
     </SidebarProvider>
