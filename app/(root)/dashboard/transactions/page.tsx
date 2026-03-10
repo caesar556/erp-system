@@ -4,7 +4,7 @@ import TransactionsTable from "@/components/pages/transactions/TransactionsTable
 
 export default function TransactionsPage() {
   return (
-    <section className="px-6">
+    <section className="px-4 md:px-6 py-6 w-full">
       <HeaderBox
         title="نظام إدارة المعاملات المالية"
         subtext="هنا يمكنك رؤية وإدارة جميع المعاملات المالية الخاصة بك"
@@ -12,7 +12,6 @@ export default function TransactionsPage() {
       />
 
       <Status />
-      <h2>Form </h2>
       <TransactionsTable />
     </section>
   );

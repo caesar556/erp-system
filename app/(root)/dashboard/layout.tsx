@@ -14,11 +14,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SidebarProvider>
-      <main className="flex min-h-screen w-full">
-        <AppSidebar />
-        <div className="flex flex-1 flex-col">
-          <SidebarTrigger />
+    <SidebarProvider defaultOpen={true}>
+      <AppSidebar />
+      <main className="flex flex-1 flex-col min-h-screen w-full">
+        <div className="fixed top-4 right-4 z-40 md:hidden">
+          <SidebarTrigger className="bg-slate-900 text-white hover:bg-slate-800 border-0" />
+        </div>
+        <div className="flex-1">
           {children}
         </div>
       </main>
