@@ -1,5 +1,5 @@
-export default function  CustomersPage(){
-  return (
-    <h1>customers</h1>
-  );
+import CustomersMain from "@/components/pages/customers/CustomersMain";
+
+export default function CustomersPage() {
+  return <CustomersMain />;
 }

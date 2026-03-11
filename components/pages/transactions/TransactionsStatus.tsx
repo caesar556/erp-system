@@ -10,7 +10,7 @@ import {
   History,
 } from "lucide-react";
 
-export default function Status() {
+export default function TransactionsStatus() {
   const stats = [
     {
       title: "إجمالي المقبوضات",
