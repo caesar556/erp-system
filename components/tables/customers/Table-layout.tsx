@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -15,25 +15,30 @@ import {
   TableRow,
   TableCell,
 } from "@/components/ui/table";
-import { Input } from "@/components/ui/input";
 import CustomerRow from "./Table-row";
 import { useCustomers } from "@/hooks/data/useCustomers";
-import { Search } from "lucide-react";
 import { useState } from "react";
+import SearchInp from "@/components/common/SearchInp";
+import PaginationData from "@/components/common/PaginationData";
 
 export default function TableLayout() {
   const { customers } = useCustomers();
+
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredCustomers = customers.filter((customer) =>
-    customer.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredCustomers = customers.filter(
+    (customer) =>
+      customer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      customer?.phone?.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   return (
     <Card className="shadow-lg border-0 bg-white rounded-xl overflow-hidden">
       <CardHeader className="flex flex-row items-center justify-between bg-gradient-to-r from-violet-50 to-indigo-50 border-b border-violet-100 px-6 py-5">
         <div className="space-y-1">
-          <CardTitle className="text-xl font-semibold text-violet-900">قائمة العملاء</CardTitle>
+          <CardTitle className="text-xl font-semibold text-violet-900">
+            قائمة العملاء
+          </CardTitle>
           <CardDescription className="text-violet-700">
             إدارة جميع العملاء المسجلين في النظام
           </CardDescription>
@@ -46,33 +51,40 @@ export default function TableLayout() {
 
       <CardContent className="p-0">
         <div className="px-6 py-4 border-b border-violet-100 bg-white">
-          <div className="relative">
-            <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-violet-400" />
-            <Input
-              placeholder="ابحث عن عميل..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-4 pr-10 rounded-lg border-violet-200 bg-violet-50 focus:bg-white focus:border-violet-400"
-            />
-          </div>
+          <SearchInp value={searchTerm} onChange={setSearchTerm} />
         </div>
 
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
               <TableRow className="bg-violet-50 border-b-2 border-violet-200 hover:bg-violet-50">
-                <TableHead className="text-right text-violet-700 font-semibold">العميل</TableHead>
-                <TableHead className="text-right text-violet-700 font-semibold">التواصل</TableHead>
-                <TableHead className="text-right text-violet-700 font-semibold">الفئة</TableHead>
-                <TableHead className="text-right text-violet-700 font-semibold">الحالة</TableHead>
-                <TableHead className="text-right text-violet-700 font-semibold">الرصيد</TableHead>
-                <TableHead className="text-left w-[80px] text-violet-700 font-semibold">الإجراءات</TableHead>
+                <TableHead className="text-right text-violet-700 font-semibold">
+                  العميل
+                </TableHead>
+                <TableHead className="text-right text-violet-700 font-semibold">
+                  التواصل
+                </TableHead>
+                <TableHead className="text-right text-violet-700 font-semibold">
+                  الفئة
+                </TableHead>
+                <TableHead className="text-right text-violet-700 font-semibold">
+                  الحالة
+                </TableHead>
+                <TableHead className="text-right text-violet-700 font-semibold">
+                  الرصيد
+                </TableHead>
+                <TableHead className="text-center w-[80px] text-violet-700 font-semibold">
+                  الإجراءات
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {filteredCustomers.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={6} className="h-24 text-center text-slate-500">
+                  <TableCell
+                    colSpan={6}
+                    className="h-24 text-center text-slate-500"
+                  >
                     {searchTerm ? "لم يتم العثور على عملاء" : "لا يوجد عملاء"}
                   </TableCell>
                 </TableRow>
@@ -83,6 +95,9 @@ export default function TableLayout() {
               )}
             </TableBody>
           </Table>
+          <div className="px-6 py-4 border-t">
+            <PaginationData page={1} totalPages={10} />
+          </div>
         </div>
       </CardContent>
     </Card>

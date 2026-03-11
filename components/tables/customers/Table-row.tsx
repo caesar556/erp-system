@@ -23,11 +23,11 @@ export default function CustomerRow({ customer }: { customer: Customer }) {
   const getCategoryBadgeColor = () => {
     switch (customer.category) {
       case "vip":
-        return "bg-indigo-100 text-indigo-700 border-indigo-200";
+        return "bg-sky-100 text-indigo-700 border-indigo-200";
       case "wholesale":
         return "bg-violet-100 text-violet-700 border-violet-200";
       default:
-        return "bg-slate-100 text-slate-700 border-slate-200";
+        return "bg-green-100 text-slate-700 border-slate-200";
     }
   };
 
@@ -50,13 +50,13 @@ export default function CustomerRow({ customer }: { customer: Customer }) {
   return (
     <TableRow
       key={customer.id}
-      className="border-b border-violet-100 hover:bg-violet-50/50 transition-colors duration-200"
+      className="border-b border-violet-100 hover:bg-violet-50/50 transition-colors duration-200 "
     >
       {/* Customer */}
       <TableCell className="py-4">
         <div className="flex items-center gap-3">
-          <Avatar className={`h-12 w-12 ring-2 ring-violet-200 ${getAvatarColor()}`}>
-            <AvatarFallback className="font-bold text-white text-sm">
+          <Avatar className={` hidden md:flex h-12 w-12 ring-2 ring-violet-200 ${getAvatarColor()}`}>
+            <AvatarFallback className="font-bold  text-sm">
               {initials}
             </AvatarFallback>
           </Avatar>
@@ -83,7 +83,7 @@ export default function CustomerRow({ customer }: { customer: Customer }) {
       </TableCell>
 
       {/* Category */}
-      <TableCell className="py-4">
+      <TableCell className="py-4 ">
         <Badge variant="outline" className={`border ${getCategoryBadgeColor()} font-medium`}>
           {customer.category === "vip" && "VIP"}
           {customer.category === "wholesale" && "جملة"}
@@ -108,14 +108,14 @@ export default function CustomerRow({ customer }: { customer: Customer }) {
 
       {/* Balance */}
       <TableCell className="py-4 text-right">
-        <Badge className="bg-violet-100 text-violet-700 border border-violet-200 font-semibold text-sm px-3 py-1.5">
+        <Badge className=" bg-gray-300 text-black border border-violet-200 font-semibold text-sm px-3 py-1.5">
           ${formatBalance(customer.balance)}
         </Badge>
       </TableCell>
 
       {/* Actions */}
       <TableCell className="py-4">
-        <div className="flex justify-end">
+        <div className="flex justify-center">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
