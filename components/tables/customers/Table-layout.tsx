@@ -31,28 +31,28 @@ export default function TableLayout() {
 
   return (
     <Card className="shadow-lg border-0 bg-white rounded-xl overflow-hidden">
-      <CardHeader className="flex flex-row items-center justify-between bg-gradient-to-r from-slate-50 to-slate-100 border-b px-6 py-5">
+      <CardHeader className="flex flex-row items-center justify-between bg-gradient-to-r from-violet-50 to-indigo-50 border-b border-violet-100 px-6 py-5">
         <div className="space-y-1">
-          <CardTitle className="text-xl font-semibold text-slate-900">قائمة العملاء</CardTitle>
-          <CardDescription className="text-slate-600">
+          <CardTitle className="text-xl font-semibold text-violet-900">قائمة العملاء</CardTitle>
+          <CardDescription className="text-violet-700">
             إدارة جميع العملاء المسجلين في النظام
           </CardDescription>
         </div>
 
-        <Badge className="px-4 py-2 text-sm font-medium bg-blue-100 text-blue-700 hover:bg-blue-100">
+        <Badge className="px-4 py-2 text-sm font-medium bg-violet-100 text-violet-700 hover:bg-violet-100">
           {filteredCustomers.length} / {customers.length} عميل
         </Badge>
       </CardHeader>
 
       <CardContent className="p-0">
-        <div className="px-6 py-4 border-b bg-white">
+        <div className="px-6 py-4 border-b border-violet-100 bg-white">
           <div className="relative">
-            <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
+            <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-violet-400" />
             <Input
               placeholder="ابحث عن عميل..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-4 pr-10 rounded-lg border-slate-200 bg-slate-50 focus:bg-white"
+              className="pl-4 pr-10 rounded-lg border-violet-200 bg-violet-50 focus:bg-white focus:border-violet-400"
             />
           </div>
         </div>
@@ -60,13 +60,13 @@ export default function TableLayout() {
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
-              <TableRow className="bg-slate-50 border-b-2 border-slate-200 hover:bg-slate-50">
-                <TableHead className="text-right text-slate-700 font-semibold">العميل</TableHead>
-                <TableHead className="text-right text-slate-700 font-semibold">التواصل</TableHead>
-                <TableHead className="text-right text-slate-700 font-semibold">الفئة</TableHead>
-                <TableHead className="text-right text-slate-700 font-semibold">الحالة</TableHead>
-                <TableHead className="text-right text-slate-700 font-semibold">الرصيد</TableHead>
-                <TableHead className="text-left w-[80px] text-slate-700 font-semibold">الإجراءات</TableHead>
+              <TableRow className="bg-violet-50 border-b-2 border-violet-200 hover:bg-violet-50">
+                <TableHead className="text-right text-violet-700 font-semibold">العميل</TableHead>
+                <TableHead className="text-right text-violet-700 font-semibold">التواصل</TableHead>
+                <TableHead className="text-right text-violet-700 font-semibold">الفئة</TableHead>
+                <TableHead className="text-right text-violet-700 font-semibold">الحالة</TableHead>
+                <TableHead className="text-right text-violet-700 font-semibold">الرصيد</TableHead>
+                <TableHead className="text-left w-[80px] text-violet-700 font-semibold">الإجراءات</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>

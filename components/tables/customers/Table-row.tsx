@@ -23,9 +23,9 @@ export default function CustomerRow({ customer }: { customer: Customer }) {
   const getCategoryBadgeColor = () => {
     switch (customer.category) {
       case "vip":
-        return "bg-purple-100 text-purple-700 border-purple-200";
+        return "bg-indigo-100 text-indigo-700 border-indigo-200";
       case "wholesale":
-        return "bg-orange-100 text-orange-700 border-orange-200";
+        return "bg-violet-100 text-violet-700 border-violet-200";
       default:
         return "bg-slate-100 text-slate-700 border-slate-200";
     }
@@ -33,32 +33,36 @@ export default function CustomerRow({ customer }: { customer: Customer }) {
 
   const getAvatarColor = () => {
     const colors = [
-      "bg-blue-500",
+      "bg-violet-500",
+      "bg-indigo-500",
       "bg-purple-500",
-      "bg-pink-500",
-      "bg-green-500",
-      "bg-yellow-500",
-      "bg-red-500",
+      "bg-violet-600",
+      "bg-indigo-600",
+      "bg-purple-600",
     ];
     return colors[customer.name.charCodeAt(0) % colors.length];
+  };
+
+  const formatBalance = (balance: number) => {
+    return balance.toLocaleString("en-US");
   };
 
   return (
     <TableRow
       key={customer.id}
-      className="border-b border-slate-100 hover:bg-slate-50 transition-colors duration-200"
+      className="border-b border-violet-100 hover:bg-violet-50/50 transition-colors duration-200"
     >
       {/* Customer */}
       <TableCell className="py-4">
         <div className="flex items-center gap-3">
-          <Avatar className={`h-10 w-10 ${getAvatarColor()}`}>
-            <AvatarFallback className="font-semibold text-white">
+          <Avatar className={`h-12 w-12 ring-2 ring-violet-200 ${getAvatarColor()}`}>
+            <AvatarFallback className="font-bold text-white text-sm">
               {initials}
             </AvatarFallback>
           </Avatar>
 
           <div className="flex flex-col">
-            <span className="font-medium text-slate-900">{customer.name}</span>
+            <span className="font-semibold text-slate-900">{customer.name}</span>
           </div>
         </div>
       </TableCell>
@@ -90,8 +94,8 @@ export default function CustomerRow({ customer }: { customer: Customer }) {
       {/* Status */}
       <TableCell className="py-4">
         {customer.isActive ? (
-          <Badge className="bg-green-100 text-green-700 border border-green-200 font-medium">
-            <span className="inline-block w-2 h-2 rounded-full bg-green-600 mr-2"></span>
+          <Badge className="bg-violet-100 text-violet-700 border border-violet-200 font-medium">
+            <span className="inline-block w-2 h-2 rounded-full bg-violet-600 mr-2"></span>
             نشط
           </Badge>
         ) : (
@@ -104,9 +108,9 @@ export default function CustomerRow({ customer }: { customer: Customer }) {
 
       {/* Balance */}
       <TableCell className="py-4 text-right">
-        <span className="text-slate-900 font-semibold">
-          {customer.balance.toLocaleString("ar-SA")}
-        </span>
+        <Badge className="bg-violet-100 text-violet-700 border border-violet-200 font-semibold text-sm px-3 py-1.5">
+          ${formatBalance(customer.balance)}
+        </Badge>
       </TableCell>
 
       {/* Actions */}
@@ -117,7 +121,7 @@ export default function CustomerRow({ customer }: { customer: Customer }) {
               <Button
                 size="icon"
                 variant="ghost"
-                className="h-8 w-8 text-slate-500 hover:bg-slate-100 hover:text-slate-700 transition-colors"
+                className="h-8 w-8 text-slate-500 hover:bg-violet-100 hover:text-violet-700 transition-colors"
               >
                 <MoreHorizontal className="h-4 w-4" />
               </Button>
@@ -134,7 +138,7 @@ export default function CustomerRow({ customer }: { customer: Customer }) {
                 </Link>
               </DropdownMenuItem>
 
-              <DropdownMenuItem className="flex items-center gap-2 cursor-pointer text-blue-600">
+              <DropdownMenuItem className="flex items-center gap-2 cursor-pointer text-violet-600">
                 <Edit3 className="h-4 w-4" />
                 تعديل
               </DropdownMenuItem>
