@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/table";
 
 import TransactionsRow from "./TransactionsRow";
+import PaginationData from "@/components/common/PaginationData";
 
 export default function TransactionsTableLayout() {
   return (
@@ -32,6 +33,9 @@ export default function TransactionsTableLayout() {
           ))}
         </TableBody>
       </Table>
+      <div className="px-6 py-4 border-t">
+        <PaginationData page={1} totalPages={10} />
+      </div>
     </div>
   );
 }

@@ -20,6 +20,7 @@ import { useCustomers } from "@/hooks/data/useCustomers";
 import { useState } from "react";
 import SearchInp from "@/components/common/SearchInp";
 import PaginationData from "@/components/common/PaginationData";
+import CustomersToolbar from "@/components/filters/CustomersToolbar";
 
 export default function TableLayout() {
   const { customers } = useCustomers();
@@ -50,8 +51,16 @@ export default function TableLayout() {
       </CardHeader>
 
       <CardContent className="p-0">
-        <div className="px-6 py-4 border-b border-violet-100 bg-white">
+        <div className=" flex gap-6 justify-between flex-wrap px-6 py-4 border-b border-violet-100 bg-white">
           <SearchInp value={searchTerm} onChange={setSearchTerm} />
+          <CustomersToolbar
+            active=""
+            setActive={() => ""}
+            debit=""
+            setDebit={() => ""}
+            customerDate=""
+            setCustomerDate={() => ""}
+          />
         </div>
 
         <div className="overflow-x-auto">
