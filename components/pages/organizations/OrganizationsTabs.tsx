@@ -1,10 +1,12 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import OverviewTab from "./tabs/OverviewTab";
 
 export default function OrganizationsTabs() {
   return (
-    <div dir="rtl" className="w-full">
+    <div className="p-8 w-full space-y-8 bg-gradient-to-br from-red-50 via-white to-sky-50 min-h-screen">
+
       <Tabs defaultValue="overview" className="w-full space-y-6">
         {/* Tabs Header */}
         <TabsList className="w-full flex flex-wrap gap-2 bg-muted/50 p-2 rounded-xl">
@@ -59,7 +61,9 @@ export default function OrganizationsTabs() {
         </TabsList>
 
         {/* Content */}
-        <TabsContent value="overview">نظرة عامة</TabsContent>
+        <TabsContent value="overview">
+          <OverviewTab />
+        </TabsContent>
         <TabsContent value="employees">الموظفين</TabsContent>
         <TabsContent value="reports">التقارير</TabsContent>
         <TabsContent value="branches">الفروع</TabsContent>
