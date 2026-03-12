@@ -12,222 +12,116 @@ import {
   Building2,
 } from "lucide-react";
 
-export default function OrganizationsTabs() {
-  const tabs = [
-    {
-      value: "overview",
-      label: "نظرة عامة",
-      icon: Building2,
-      description: "معلومات عامة عن المؤسسة",
-    },
-    {
-      value: "employees",
-      label: "الموظفين",
-      icon: Users,
-      description: "إدارة الموظفين والفريق",
-    },
-    {
-      value: "reports",
-      label: "التقارير",
-      icon: BarChart3,
-      description: "التقارير والإحصائيات",
-    },
-    {
-      value: "branches",
-      label: "الفروع",
-      icon: MapPin,
-      description: "إدارة الفروع والمقرات",
-    },
-    {
-      value: "departments",
-      label: "الأقسام",
-      icon: FolderOpen,
-      description: "إدارة الأقسام التنظيمية",
-    },
-    {
-      value: "subscription",
-      label: "الاشتراك",
-      icon: CreditCard,
-      description: "تفاصيل الاشتراك والدفع",
-    },
-    {
-      value: "settings",
-      label: "الإعدادات",
-      icon: Settings,
-      description: "إعدادات المؤسسة",
-    },
-  ];
+const tabs = [
+  { value: "overview",      label: "نظرة عامة",         icon: Building2, color: "text-blue-600",   bg: "from-blue-50 to-indigo-50",   border: "border-blue-200",   iconColor: "text-blue-500"   },
+  { value: "employees",     label: "الموظفين",           icon: Users,     color: "text-violet-600", bg: "from-violet-50 to-purple-50", border: "border-violet-200", iconColor: "text-violet-500" },
+  { value: "reports",       label: "التقارير",           icon: BarChart3, color: "text-emerald-600",bg: "from-emerald-50 to-green-50", border: "border-emerald-200",iconColor: "text-emerald-500"},
+  { value: "branches",      label: "الفروع",             icon: MapPin,    color: "text-orange-600", bg: "from-orange-50 to-amber-50",  border: "border-orange-200", iconColor: "text-orange-500" },
+  { value: "departments",   label: "الأقسام",            icon: FolderOpen,color: "text-pink-600",   bg: "from-pink-50 to-rose-50",     border: "border-pink-200",   iconColor: "text-pink-500"   },
+  { value: "subscription",  label: "الاشتراك",           icon: CreditCard,color: "text-cyan-600",   bg: "from-cyan-50 to-sky-50",      border: "border-cyan-200",   iconColor: "text-cyan-500"   },
+  { value: "settings",      label: "الإعدادات",          icon: Settings,  color: "text-slate-600",  bg: "from-slate-50 to-gray-50",    border: "border-slate-200",  iconColor: "text-slate-500"  },
+];
 
+function PlaceholderContent({
+  icon: Icon,
+  title,
+  description,
+  bg,
+  border,
+  iconColor,
+}: {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+  bg: string;
+  border: string;
+  iconColor: string;
+}) {
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Tabs defaultValue="overview" className="w-full">
-          {/* Modern Tab Navigation */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <h1 className="text-3xl font-bold text-slate-900 tracking-tight">
-                  إدارة المؤسسة
-                </h1>
-                <p className="text-slate-600 text-sm mt-1">
-                  إدارة شاملة لجميع عمليات مؤسستك وإدارة الموارد
-                </p>
-              </div>
-            </div>
+    <div className="space-y-6">
+      <div>
+        <h2 className="text-2xl font-bold text-slate-900 mb-1">{title}</h2>
+        <p className="text-slate-500 text-sm">{description}</p>
+      </div>
+      <div
+        className={`bg-gradient-to-br ${bg} border ${border} rounded-2xl p-12 flex flex-col items-center justify-center gap-4`}
+      >
+        <div className="w-16 h-16 rounded-full bg-white/80 flex items-center justify-center shadow-sm">
+          <Icon className={`w-8 h-8 ${iconColor}`} />
+        </div>
+        <p className="text-slate-500 text-sm font-medium">
+          سيتم عرض المحتوى هنا قريباً
+        </p>
+      </div>
+    </div>
+  );
+}
 
-            {/* Tabs List with Modern Design */}
-            <TabsList className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-2 bg-transparent p-0 h-auto">
-              {tabs.map((tab) => {
-                const IconComponent = tab.icon;
-                return (
-                  <TabsTrigger
-                    key={tab.value}
-                    value={tab.value}
-                    className="group flex flex-col items-center gap-2 px-3 py-3 rounded-xl border-2 border-transparent bg-white hover:border-slate-200 hover:shadow-sm transition-all duration-200 data-[state=active]:border-blue-500 data-[state=active]:bg-blue-50 data-[state=active]:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                  >
-                    <IconComponent className="w-5 h-5 text-slate-600 group-data-[state=active]:text-blue-600 transition-colors" />
-                    <span className="text-xs font-semibold text-slate-700 group-data-[state=active]:text-blue-700 text-center leading-tight">
-                      {tab.label}
-                    </span>
-                  </TabsTrigger>
-                );
-              })}
+export default function OrganizationsTabs() {
+  return (
+    <div className="w-full min-h-screen bg-slate-50/60">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        {/* Page Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-slate-900 tracking-tight">
+            إدارة المؤسسة
+          </h1>
+          <p className="text-slate-500 text-sm mt-1">
+            إدارة شاملة لجميع عمليات مؤسستك
+          </p>
+        </div>
+
+        <Tabs defaultValue="overview" className="w-full space-y-6">
+
+          {/* ── Horizontal scrollable tab bar ── */}
+          <div className="overflow-x-auto pb-1">
+            <TabsList className="inline-flex flex-row items-center gap-1 bg-white border border-slate-200 rounded-2xl p-1.5 shadow-sm min-w-max h-auto w-auto">
+              {tabs.map(({ value, label, icon: Icon, color }) => (
+                <TabsTrigger
+                  key={value}
+                  value={value}
+                  className={`
+                    group inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium
+                    text-slate-500 bg-transparent border border-transparent
+                    hover:bg-slate-100 hover:text-slate-700
+                    transition-all duration-150
+                    data-[state=active]:bg-slate-900 data-[state=active]:text-white data-[state=active]:border-slate-900 data-[state=active]:shadow-md
+                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-1
+                    whitespace-nowrap
+                  `}
+                >
+                  <Icon className={`w-4 h-4 transition-colors group-data-[state=active]:text-white ${color}`} />
+                  {label}
+                </TabsTrigger>
+              ))}
             </TabsList>
           </div>
 
-          {/* Tab Content with Professional Styling */}
-          <div className="rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-            <TabsContent value="overview" className="p-0">
+          {/* ── Tab Content Panel ── */}
+          <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+
+            <TabsContent value="overview" className="m-0 p-0">
               <div className="p-6 sm:p-8">
                 <OverviewTab />
               </div>
             </TabsContent>
 
-            <TabsContent value="employees" className="p-0">
-              <div className="p-6 sm:p-8">
-                <div className="space-y-6">
-                  <div>
-                    <h2 className="text-2xl font-bold text-slate-900 mb-2">
-                      الموظفين
-                    </h2>
-                    <p className="text-slate-600">
-                      قم بإدارة جميع موظفيك وتعيينهم إلى الأقسام والفروع المختلفة.
-                    </p>
-                  </div>
-                  <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-8 text-center">
-                    <Users className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                    <p className="text-slate-600">
-                      سيتم عرض قائمة الموظفين هنا قريباً
-                    </p>
-                  </div>
+            {tabs.slice(1).map(({ value, label, icon, bg, border, iconColor }) => (
+              <TabsContent key={value} value={value} className="m-0 p-0">
+                <div className="p-6 sm:p-8">
+                  <PlaceholderContent
+                    icon={icon}
+                    title={label}
+                    description={`إدارة ${label} الخاصة بمؤسستك`}
+                    bg={bg}
+                    border={border}
+                    iconColor={iconColor}
+                  />
                 </div>
-              </div>
-            </TabsContent>
+              </TabsContent>
+            ))}
 
-            <TabsContent value="reports" className="p-0">
-              <div className="p-6 sm:p-8">
-                <div className="space-y-6">
-                  <div>
-                    <h2 className="text-2xl font-bold text-slate-900 mb-2">
-                      التقارير والإحصائيات
-                    </h2>
-                    <p className="text-slate-600">
-                      عرض تحليلي شامل لأداء مؤسستك والإحصائيات المهمة.
-                    </p>
-                  </div>
-                  <div className="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-lg p-8 text-center">
-                    <BarChart3 className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                    <p className="text-slate-600">
-                      سيتم عرض التقارير والإحصائيات هنا قريباً
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="branches" className="p-0">
-              <div className="p-6 sm:p-8">
-                <div className="space-y-6">
-                  <div>
-                    <h2 className="text-2xl font-bold text-slate-900 mb-2">
-                      الفروع والمقرات
-                    </h2>
-                    <p className="text-slate-600">
-                      إدارة جميع فروع ومقرات مؤسستك الجغرافية.
-                    </p>
-                  </div>
-                  <div className="bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-200 rounded-lg p-8 text-center">
-                    <MapPin className="w-12 h-12 text-orange-600 mx-auto mb-4" />
-                    <p className="text-slate-600">
-                      سيتم عرض الفروع والمقرات هنا قريباً
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="departments" className="p-0">
-              <div className="p-6 sm:p-8">
-                <div className="space-y-6">
-                  <div>
-                    <h2 className="text-2xl font-bold text-slate-900 mb-2">
-                      الأقسام التنظيمية
-                    </h2>
-                    <p className="text-slate-600">
-                      تنظيم وإدارة أقسام مؤسستك الداخلية.
-                    </p>
-                  </div>
-                  <div className="bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 rounded-lg p-8 text-center">
-                    <FolderOpen className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-                    <p className="text-slate-600">
-                      سيتم عرض الأقسام هنا قريباً
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="subscription" className="p-0">
-              <div className="p-6 sm:p-8">
-                <div className="space-y-6">
-                  <div>
-                    <h2 className="text-2xl font-bold text-slate-900 mb-2">
-                      خطة الاشتراك والدفع
-                    </h2>
-                    <p className="text-slate-600">
-                      إدارة اشتراكك والفواتير والدفع.
-                    </p>
-                  </div>
-                  <div className="bg-gradient-to-br from-cyan-50 to-blue-50 border border-cyan-200 rounded-lg p-8 text-center">
-                    <CreditCard className="w-12 h-12 text-cyan-600 mx-auto mb-4" />
-                    <p className="text-slate-600">
-                      سيتم عرض تفاصيل الاشتراك هنا قريباً
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="settings" className="p-0">
-              <div className="p-6 sm:p-8">
-                <div className="space-y-6">
-                  <div>
-                    <h2 className="text-2xl font-bold text-slate-900 mb-2">
-                      إعدادات المؤسسة
-                    </h2>
-                    <p className="text-slate-600">
-                      قم بتعديل إعدادات مؤسستك والتفضيلات العامة.
-                    </p>
-                  </div>
-                  <div className="bg-gradient-to-br from-red-50 to-rose-50 border border-red-200 rounded-lg p-8 text-center">
-                    <Settings className="w-12 h-12 text-red-600 mx-auto mb-4" />
-                    <p className="text-slate-600">
-                      سيتم عرض الإعدادات هنا قريباً
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </TabsContent>
           </div>
         </Tabs>
       </div>
