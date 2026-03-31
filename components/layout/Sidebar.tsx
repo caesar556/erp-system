@@ -76,7 +76,7 @@ export function AppSidebar() {
       dir="rtl"
       side="right"
       collapsible="offcanvas"
-      className="border-l bg-slate-900 text-slate-300 h-dvh"
+      className="border-l bg-slate-900 text-slate-300 h-dvh overflow-hidden"
     >
       <SidebarHeader className="p-6">
         <div className="flex items-center gap-3">

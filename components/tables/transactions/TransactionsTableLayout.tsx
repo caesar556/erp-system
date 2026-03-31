@@ -1,6 +1,6 @@
 "use client";
 
-import { transactions } from "@/constants/constant";
+import { transactions } from "@/constants/dummy";
 import {
   Table,
   TableHeader,

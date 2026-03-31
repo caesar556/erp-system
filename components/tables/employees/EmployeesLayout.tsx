@@ -16,12 +16,12 @@ import {
   TableRow,
   TableCell,
 } from "@/components/ui/table";
-import CustomerRow from "./Table-row";
 import { useCustomers } from "@/hooks/data/useCustomers";
 import { useState } from "react";
 import SearchInp from "@/components/common/SearchInp";
 import PaginationData from "@/components/common/PaginationData";
 import CustomersToolbar from "@/components/filters/CustomersToolbar";
+import CustomerRow from "../customers/Table-row";
 
 export default function TableLayout() {
   const { customers } = useCustomers();

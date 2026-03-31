@@ -1,18 +1,8 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { LucideIcon } from "lucide-react";
+import { StatCardProps } from "@/types/common";
 
-interface StatCardProps {
-  title: string;
-  value: number;
-  currency?: string;
-  gradient: string;
-  Icon: LucideIcon;
-  badgeText: string;
-  BadgeIcon: LucideIcon;
-  badgeTextColor: string;
-}
 
 export default function StatusCard({
   title,
