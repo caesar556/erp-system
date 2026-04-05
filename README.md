@@ -1,36 +1,344 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🧾 SaaS Financial System
 
-## Getting Started
+> ⚠️ Project Status: This project is currently under active development (Work in Progress). Features, APIs, and structure may change over time.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A scalable, modular SaaS Financial & Accounting System built to handle core financial operations such as transactions, journal entries, ledger management, and treasury tracking. The system is designed with performance, extensibility, and multi-tenant architecture in mind.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+🚀 Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+Frontend
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Next.js – SSR & modern React framework
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Tailwind CSS – Utility-first styling
 
-## Deploy on Vercel
+ShadCN UI – Accessible and reusable UI components
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+TanStack (React Query) – Server state management & caching
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+Backend
+
+NestJS – Scalable Node.js framework with modular architecture
+
+PostgreSQL – Relational database for financial consistency
+
+Redis – Caching & queue support
+
+BullMQ – Background job processing (queues & workers)
+
+
+
+---
+
+📌 Core Features
+
+🏢 Organization Management
+
+Multi-tenant system (each organization has isolated data)
+
+CRUD operations for organizations
+
+Scalable structure to support multiple businesses
+
+
+
+---
+
+💰 Treasury Management
+
+Create and manage treasuries (cash / bank accounts)
+
+Track balances dynamically
+
+Link treasuries with accounting accounts
+
+
+
+---
+
+📒 Chart of Accounts (COA)
+
+Hierarchical account structure (parent / child accounts)
+
+Supports:
+
+Assets
+
+Liabilities
+
+Equity
+
+Revenue
+
+Expenses
+
+
+Enables proper financial classification
+
+
+
+---
+
+🧾 Journal Entries
+
+Double-entry accounting system
+
+Each journal entry contains:
+
+Multiple lines (debit / credit)
+
+
+Validation:
+
+Total debit = total credit
+
+
+Uses transaction-safe operations via EntityManager
+
+
+
+---
+
+🔄 Transactions Module
+
+High-level abstraction over journal entries
+
+Handles business logic like:
+
+Cash In / Cash Out
+
+Transfers
+
+
+Automatically generates corresponding journal entries
+
+
+
+---
+
+📊 Ledger System
+
+Tracks all account movements
+
+Generates:
+
+Account statements
+
+Running balances
+
+
+Based on journal lines
+
+
+
+---
+
+⚙️ Background Jobs (BullMQ)
+
+Queue-based processing for:
+
+Heavy operations
+
+Async financial tasks
+
+
+Improves system performance and responsiveness
+
+
+
+---
+
+⚡ Caching Layer (Redis)
+
+Cache frequently accessed data:
+
+Accounts
+
+Balances
+
+
+Reduces database load
+
+
+
+---
+
+🧠 Architecture Overview
+
+The system follows a modular architecture in NestJS:
+
+Organizations Module
+
+Accounts Module
+
+Treasury Module
+
+Journal Module
+
+Transactions Module
+
+Ledger Module
+
+
+Each module:
+
+Has its own DTOs
+
+Uses Services for business logic
+
+Uses Controllers for API exposure
+
+
+
+---
+
+🔐 Data Integrity & Consistency
+
+Uses database transactions via EntityManager
+
+Ensures:
+
+Atomic operations
+
+Rollback on failure
+
+
+Critical for financial correctness
+
+
+
+---
+
+📦 API Design
+
+RESTful APIs
+
+DTO validation using class-validator
+
+Clear separation between:
+
+Input validation (DTOs)
+
+Business logic (Services)
+
+
+
+
+---
+
+🛠 Example Workflow
+
+➤ Creating a Transaction
+
+1. User sends transaction request
+
+
+2. Transaction Service:
+
+Validates input
+
+Prepares journal lines
+
+
+
+3. Journal Service:
+
+Creates journal entry
+
+Inserts debit/credit lines
+
+
+
+4. Ledger updates automatically
+
+
+
+
+---
+
+📈 Future Enhancements
+
+Multi-currency support 💱
+
+Role-based access control (RBAC) 🔐
+
+Financial reports:
+
+Balance Sheet
+
+Income Statement
+
+
+Audit logs & activity tracking
+
+Webhooks & integrations
+
+
+
+---
+
+⚙️ Setup & Installation
+
+# Clone the repo
+git clone <your-repo-url>
+
+# Install dependencies
+pnpm install
+
+# Run backend
+pnpm run start:dev
+
+# Run frontend
+pnpm run dev
+
+
+---
+
+🧪 Environment Variables
+
+DATABASE_URL=
+REDIS_HOST=
+REDIS_PORT=
+JWT_SECRET=
+
+
+---
+
+🎯 Project Goals
+
+Build a production-ready SaaS financial system
+
+Apply real-world accounting principles
+
+Practice scalable backend architecture
+
+Ensure high performance & reliability
+
+
+
+---
+
+👨‍💻 Author
+
+Developed by Bilal Hussein
+
+
+---
+
+⭐ Notes
+
+This project demonstrates:
+
+Strong backend architecture using NestJS
+
+Deep understanding of accounting systems
+
+Clean separation of concerns
+
+Scalable SaaS design patterns
